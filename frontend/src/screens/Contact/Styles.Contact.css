@@ -1,0 +1,11 @@
+.contactPlace {
+  height: 5em;
+  background-color: red;
+  margin-top: 2em;
+  width: 100%;
+}
+
+.contactText {
+  display: flex;
+  width: 100%;
+}
