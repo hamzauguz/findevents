@@ -10,6 +10,42 @@ const Login = () => {
   const [show, setShow] = useState(1);
   const navigate = useNavigate();
 
+  const InsertRecord = () => {
+    if (email.length == 0 || password.length == 0) {
+      alert("Required Field Is Missing!!!");
+    } else {
+      var APIURL = "http://localhost/login.php";
+
+      var headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+
+      var Data = {
+        email: email,
+        password: password,
+      };
+
+      fetch(APIURL, {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(Data),
+      })
+        .then((Response) => Response.json())
+        .then((Response) => {
+          alert(Response[0].Message);
+          if (Response[0].Message == "Success") {
+            console.log("true");
+            navigate("/home");
+          }
+          console.log(Data);
+        })
+        .catch((error) => {
+          console.error("ERROR FOUND" + error);
+        });
+    }
+  };
+
   return (
     <div className="main">
       <div className="form-center">
@@ -68,6 +104,7 @@ const Login = () => {
                   disabled={!email || !password}
                   type={"submit"}
                   className={"buttonClass"}
+                  onClick={InsertRecord}
                 >
                   Giriş Yap
                 </button>

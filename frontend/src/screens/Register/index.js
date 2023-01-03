@@ -11,6 +11,25 @@ const Register = () => {
   const [show, setShow] = useState(1);
   const navigate = useNavigate();
 
+  const [inputs, setInputs] = useState([]);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    axios
+      .post("http://localhost/findevents/user/save", inputs)
+      .then(function (response) {
+        console.log(response.data);
+        alert("Kaydınız başarıyla oluşturulmuştur.");
+        navigate("/home");
+      });
+  };
+
   return (
     <div className="main">
       <div className="form-center">
@@ -26,25 +45,23 @@ const Register = () => {
               />
               <h2 className="signingooletextlogin">Sign in with Google</h2>
             </button>
-            <form className="formClass">
+            <form onSubmit={handleSubmit} className="formClass">
               <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type={"text"}
+                name="email"
+                type="text"
                 placeholder={"Emailinizi giriniz..."}
                 className={"loginStandartInputNone"}
+                onChange={handleChange}
               />
               <input
-                value={password}
+                name="password"
                 type="password"
-                onChange={(e) => setPassword(e.target.value)}
                 placeholder="Şifrenizi Giriniz..."
                 className={"loginStandartInputNone"}
+                onChange={handleChange}
               />
               <input
-                value={againPassword}
                 type="password"
-                onChange={(e) => setAgainPassword(e.target.value)}
                 placeholder="Tekrar Şifrenizi Giriniz..."
                 className={"loginStandartInputNone"}
               />
@@ -55,7 +72,7 @@ const Register = () => {
               )}
               <div className="twobuttons-register">
                 <button
-                  disabled={againPassword !== password || !email ? true : false}
+                  // disabled={againPassword !== password || !email ? true : false}
                   type="submit"
                   className={"buttonClass"}
                 >
