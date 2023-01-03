@@ -1,0 +1,17 @@
+.events-container {
+  margin: 1em auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.addEvent-button {
+  width: 20%;
+  margin: 1em auto;
+  display: flex;
+  justify-content: space-around;
+  height: 4em;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 600;
+}

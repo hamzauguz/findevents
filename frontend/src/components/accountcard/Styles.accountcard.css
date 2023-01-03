@@ -1,0 +1,87 @@
+.accountCardImage {
+  height: 10em;
+  width: 30%;
+}
+
+.accountCardPlace {
+  flex-direction: row;
+  display: flex !important;
+  margin: 0.5em;
+  border: 1px solid gray;
+  border-radius: 0.2em;
+  width: 35em;
+}
+@media screen and (max-width: 800px) {
+  .accountCardPlace {
+    width: 20em !important;
+  }
+  .accountCardPlace {
+    flex-direction: row;
+    display: flex !important;
+    margin: 0.5em;
+    border: 1px solid gray;
+    border-radius: 0.2em;
+    width: 20em !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .accountCardPlace {
+    flex-direction: column;
+    margin: 1em auto;
+    flex: 1;
+  }
+  .accountCardImage {
+    width: 100%;
+  }
+
+  .dateandprice {
+    height: 5em;
+    align-content: space-around;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .textPlace {
+    width: 90% !important;
+  }
+
+  .titleStyle {
+    width: 80% !important;
+  }
+}
+
+.accountCardPlace:hover {
+  background-color: rgb(182, 173, 173) !important;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.titleStyle {
+  font-size: 17px;
+  opacity: 0.5;
+}
+
+.dateandprice {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+}
+
+.textPlace {
+  margin: 0.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.priceStyle {
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.dateStyle {
+  color: rgb(61, 61, 78);
+  opacity: 0.8;
+}

@@ -1,39 +1,51 @@
 <?php
-header("Access-Control-Allow-Origin: *"); //add this CORS header to enable any domain to send HTTP requests to these endpoints:
-$host = "localhost"; 
-$user = "root"; 
-$password = ""; 
-$dbname = "testingdb"; 
- 
-$con = mysqli_connect($host, $user, $password,$dbname);
- 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
+header("Access-Control-Allow-Methods: *");
+
+include 'DbConnect.php';
+$objDb = new DbConnect;
+$conn = $objDb->connect();
+
 $method = $_SERVER['REQUEST_METHOD'];
- 
-if (!$con) {
-  die("Connection failed: " . mysqli_connect_error());
+switch($method) {
+    case "GET":
+        $sql = "SELECT * FROM users";
+        $path = explode('/', $_SERVER['REQUEST_URI']);
+        if(isset($path[3]) && is_numeric($path[3])) {
+            $sql .= " WHERE id = :id";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id', $path[3]);
+            $stmt->execute();
+            $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        echo json_encode($users);
+        break;
+    case "POST":
+        $user = json_decode( file_get_contents('php://input') );
+        $sql = "INSERT INTO users(id, email, password, created_at) VALUES(null, :email, :password, :created_at)";
+        $stmt = $conn->prepare($sql);
+        $created_at = date('Y-m-d');
+        $stmt->bindParam(':email', $user->email);
+        $stmt->bindParam(':password', $user->password);
+        $stmt->bindParam(':created_at', $created_at);
+
+        if($stmt->execute()) {
+            $response = ['status' => 1, 'message' => 'Record created successfully.'];
+        } else {
+            $response = ['status' => 0, 'message' => 'Failed to create record.'];
+        }
+        echo json_encode($response);
+        break;
+
+    
 }
- 
-switch ($method) {
-    case 'POST':    
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $sql = "insert into tbl_signup (email, password) values ( '$email', '$password')"; 
-    break;
-}
- 
-// run SQL statement
-$result = mysqli_query($con,$sql);
- 
-// die if SQL statement failed
-if (!$result) {
-  http_response_code(404);
-  die(mysqli_error($con));
-}
- 
-if ($method == 'POST') {
-    echo json_encode($result);
-} else {
-    echo mysqli_affected_rows($con);
-}
- 
-$con->close();
+
+?>

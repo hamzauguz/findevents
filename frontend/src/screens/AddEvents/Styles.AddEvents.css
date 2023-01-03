@@ -1,0 +1,73 @@
+.sellerMain {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  justify-content: center;
+}
+
+.inputTitle {
+  min-height: 2em;
+  font-size: 18px;
+  font-family: monospace;
+  width: 90%;
+}
+
+.textAreaInput {
+  background-color: #fff;
+  min-height: 20em;
+
+  max-height: 20em;
+  width: 90%;
+  font-size: 15px;
+  font-family: monospace;
+}
+
+.optionGames {
+  height: 3em;
+  font-size: 18px;
+  width: 90%;
+  font-family: monospace;
+}
+
+.formInside {
+  margin-bottom: 1em;
+}
+
+.addGameButton {
+  font-size: 18px;
+  width: 21em;
+  height: 4em;
+  margin-bottom: 1em;
+  font-weight: 600;
+  margin-top: 1em;
+}
+
+.descBottom {
+  margin-bottom: 0.7em;
+}
+
+.uploadImage {
+  width: 3em;
+  height: 3em;
+}
+
+.sellerForm {
+  width: 50%;
+  align-items: center;
+  padding: 1em;
+}
+
+@media (max-width: 800px) {
+  .sellerForm {
+    width: 100%;
+    align-items: center;
+    padding: 1em;
+  }
+}
+
+.addevent-container {
+  display: flex;
+  justify-content: space-around;
+}

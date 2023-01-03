@@ -22,7 +22,7 @@ const Header = () => {
         </ul>
         <ul>
           <li>
-            <a className="link-a-header" href="/home">
+            <a className="link-a-header" href="/events">
               Etkinlikler
             </a>
           </li>
