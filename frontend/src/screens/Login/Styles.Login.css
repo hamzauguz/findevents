@@ -1,0 +1,181 @@
+input {
+  margin-top: 0.5em;
+}
+
+.form-center {
+  margin: 0 auto;
+  text-align: left;
+  height: 30em;
+  width: 60%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  display: flex;
+  background: linear-gradient(
+    90deg,
+    rgba(54, 209, 220, 1) 0%,
+    rgba(91, 134, 229, 1) 100%
+  );
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.googlePlace {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  border-radius: 2em;
+  padding: 1em;
+  height: 5em;
+  cursor: pointer;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.signingooletextlogin {
+  color: rgb(59, 51, 51);
+}
+
+.loginStandartInput {
+  display: flex;
+  height: 3em;
+  font-size: 1em;
+}
+.formClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 17em;
+  text-align: center;
+}
+
+.loginStandartPassword {
+  height: 3em;
+  font-size: 1em;
+  min-width: 100%;
+}
+
+.loginStandartInputNone {
+  height: 3em;
+  font-size: 1em;
+  min-width: 100%;
+  border: 1px solid white;
+  background-color: transparent;
+  border-radius: 2em;
+  padding: 1em;
+  color: white;
+}
+.loginStandartInputNone::placeholder {
+  color: white;
+}
+.loginStandartInputNone:focus {
+  outline: 0;
+}
+
+.buttonClass {
+  height: 2.2em;
+  border-radius: 1em;
+  font-size: 1.2em;
+  background-color: white;
+  color: rgba(91, 134, 229, 1);
+  border: none;
+  font-weight: 600;
+  margin: 0.2em;
+}
+
+.buttonClass:focus {
+  background-color: rgba(91, 134, 229, 1);
+  color: white;
+}
+
+.buttonClass:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.formwithgoogle {
+  flex-direction: column;
+  display: flex;
+}
+
+.showhidePassword {
+  flex-direction: row;
+  display: flex;
+}
+
+.showeye {
+  z-index: 2;
+  margin-left: -30px;
+  margin-top: 22px;
+  float: right;
+  position: relative;
+}
+
+.login-right-place {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+.login-left-place {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  width: 50%;
+}
+
+.left-login-img {
+  max-width: 100%;
+  height: 100%;
+}
+
+.main {
+  background: linear-gradient(
+    90deg,
+    rgba(69, 104, 220, 1) 0%,
+    rgba(176, 106, 179, 1) 100%
+  );
+  padding: 5em;
+}
+
+.loginor {
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .login-left-place {
+    display: none;
+  }
+  .login-right-place {
+    align-items: center !important;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .form-center {
+    width: 100%;
+  }
+  .main {
+    padding: 0;
+  }
+  .loginStandartInputNone {
+    width: 20em;
+  }
+  .googlePlace {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.login-place-login {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgotpassword-login {
+  text-align: right;
+  cursor: pointer;
+  color: white;
+  font-weight: 400;
+  opacity: 0.7;
+}

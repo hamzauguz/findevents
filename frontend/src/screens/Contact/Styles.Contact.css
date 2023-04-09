@@ -1,0 +1,12 @@
+.contactPlace {
+  height: 5em;
+
+  margin-top: 2em;
+}
+
+.contactText {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-around;
+}
