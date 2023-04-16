@@ -7,6 +7,8 @@ import Events from "./screens/Events";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
+import Profile from "./screens/Profile";
+import Footer from "./components/footer";
 
 const App = () => {
   return (
@@ -20,8 +22,10 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/events" element={<Events />} />
           <Route path="/addevents" element={<AddEvents />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };
