@@ -5,17 +5,13 @@ input {
 .form-center {
   margin: 0 auto;
   text-align: left;
-  height: 30em;
+  height: 35em;
   width: 60%;
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
   display: flex;
-  background: linear-gradient(
-    90deg,
-    rgba(54, 209, 220, 1) 0%,
-    rgba(91, 134, 229, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(54, 209, 220, 1) 0%, rgba(91, 134, 229, 1) 100%);
   border-radius: 0.5em;
   overflow: hidden;
 }
@@ -96,6 +92,7 @@ input {
 .formwithgoogle {
   flex-direction: column;
   display: flex;
+  width: 80%;
 }
 
 .showhidePassword {
@@ -131,11 +128,7 @@ input {
 }
 
 .main {
-  background: linear-gradient(
-    90deg,
-    rgba(69, 104, 220, 1) 0%,
-    rgba(176, 106, 179, 1) 100%
-  );
+  background: linear-gradient(90deg, rgba(69, 104, 220, 1) 0%, rgba(176, 106, 179, 1) 100%);
   padding: 5em;
 }
 
@@ -178,4 +171,8 @@ input {
   color: white;
   font-weight: 400;
   opacity: 0.7;
+}
+
+.titleText {
+  text-align: center;
 }

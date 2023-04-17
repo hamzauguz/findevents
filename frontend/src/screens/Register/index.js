@@ -4,30 +4,26 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [againPassword, setAgainPassword] = useState("");
   const [showInfo, setShowInfo] = useState(false);
   const [show, setShow] = useState(1);
   const navigate = useNavigate();
 
-  const [inputs, setInputs] = useState([]);
+  const [message, setMessage] = useState("");
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    axios
-      .post("http://localhost/findevents/user/save", inputs)
-      .then(function (response) {
-        console.log(response.data);
-        alert("Kaydınız başarıyla oluşturulmuştur.");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    //console.log(formvalue);
+    const formData = { email: email, password: password };
+    await axios
+      .post("http://localhost/findevents/api/user.php", formData)
+      .then((res) => {
+        setMessage(res.data.success);
         navigate("/home");
-      });
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -35,54 +31,38 @@ const Register = () => {
       <div className="form-center">
         <div className="login-right-place">
           <div className="formwithgoogle">
-            <button className="googlePlace">
-              <img
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
-                }
-                height={40}
-                width={40}
-              />
-              <h2 className="signingooletextlogin">Sign in with Google</h2>
-            </button>
-            <form onSubmit={handleSubmit} className="formClass">
+            <h1 className="titleText">Kayıt Ol</h1>
+
+            <form onSubmit={handleSubmit} method="post" className="formClass">
               <input
                 name="email"
                 type="text"
                 placeholder={"Emailinizi giriniz..."}
                 className={"loginStandartInputNone"}
-                onChange={handleChange}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 name="password"
                 type="password"
                 placeholder="Şifrenizi Giriniz..."
                 className={"loginStandartInputNone"}
-                onChange={handleChange}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
-              <input
-                type="password"
-                placeholder="Tekrar Şifrenizi Giriniz..."
-                className={"loginStandartInputNone"}
-              />
-              {showInfo == true && (
-                <h5 className="failedpassword-register">
-                  Şifreler Uyuşmuyor...
-                </h5>
-              )}
+              {/* <input type="password" placeholder="Tekrar Şifrenizi Giriniz..." className={"loginStandartInputNone"} />
+              {showInfo == true && <h5 className="failedpassword-register">Şifreler Uyuşmuyor...</h5>} */}
               <div className="twobuttons-register">
                 <button
                   // disabled={againPassword !== password || !email ? true : false}
                   type="submit"
+                  name="submit"
                   className={"buttonClass"}
                 >
                   Kayıt Ol.
                 </button>
 
-                <button
-                  className={"buttonClass"}
-                  onClick={() => navigate("/login")}
-                >
+                <button className={"buttonClass"} onClick={() => navigate("/login")}>
                   Zaten Hesabım var.
                 </button>
               </div>

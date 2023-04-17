@@ -3,6 +3,7 @@ import "./Styles.Login.css";
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,40 +11,37 @@ const Login = () => {
   const [show, setShow] = useState(1);
   const navigate = useNavigate();
 
-  const InsertRecord = () => {
-    if (email.length == 0 || password.length == 0) {
-      alert("Required Field Is Missing!!!");
-    } else {
-      var APIURL = "http://localhost/login.php";
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      var headers = {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      };
-
-      var Data = {
-        email: email,
-        password: password,
-      };
-
-      fetch(APIURL, {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(Data),
+    const form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+    axios
+      .post("http://localhost/findevents/api/login.php", form)
+      .then((res) => {
+        console.log("DDD", res);
+        if (res.data.statusCode === 200) {
+          alert(res.data.message);
+          navigate("/home");
+        } else if (res.data.statusCode === 401) {
+          alert(res.data.message);
+        }
       })
-        .then((Response) => Response.json())
-        .then((Response) => {
-          alert(Response[0].Message);
-          if (Response[0].Message == "Success") {
-            console.log("true");
-            navigate("/home");
-          }
-          console.log(Data);
-        })
-        .catch((error) => {
-          console.error("ERROR FOUND" + error);
-        });
-    }
+      .catch((err) => console.log("err", err));
+
+    // try {
+    //   const response = await axios.post("http://localhost/findevents/api/login.php", {
+    //     email,
+    //     password,
+    //   });
+
+    //   console.log(response.data);
+    //   // Başarılı giriş durumu burada işlenir, örneğin token localStorage'e kaydedilebilir.
+    // } catch (error) {
+    //   console.error(error);
+    //   // Hatalı giriş durumu burada işlenir, örneğin kullanıcıya hata mesajı gösterilir.
+    // }
   };
 
   return (
@@ -57,17 +55,9 @@ const Login = () => {
         </div>
         <div className="login-right-place">
           <div className="formwithgoogle">
-            <button className="googlePlace">
-              <img
-                src={
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png"
-                }
-                height={40}
-                width={40}
-              />
-              <h2 className="signingooletextlogin">Sign in with Google</h2>
-            </button>
-            <form className="formClass">
+            <h1 className="titleText">Giriş Yap</h1>
+
+            <form onSubmit={handleSubmit} method="post" className="formClass">
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -84,37 +74,19 @@ const Login = () => {
                   className={"loginStandartInputNone"}
                 />
                 {show == 2 ? (
-                  <AiOutlineEye
-                    onClick={() => setShow(1)}
-                    size={20}
-                    color={"white"}
-                    className="showeye"
-                  />
+                  <AiOutlineEye onClick={() => setShow(1)} size={20} color={"white"} className="showeye" />
                 ) : (
-                  <AiOutlineEyeInvisible
-                    onClick={() => setShow(2)}
-                    size={20}
-                    color={"white"}
-                    className="showeye"
-                  />
+                  <AiOutlineEyeInvisible onClick={() => setShow(2)} size={20} color={"white"} className="showeye" />
                 )}
               </div>
               <div className="login-place-login">
-                <button
-                  disabled={!email || !password}
-                  type={"submit"}
-                  className={"buttonClass"}
-                  onClick={InsertRecord}
-                >
+                <button disabled={!email || !password} type={"submit"} className={"buttonClass"}>
                   Giriş Yap
                 </button>
                 <span className="forgotpassword-login">Şifremi unuttum.</span>
               </div>
               <h5 className="loginor">Yada</h5>
-              <button
-                className={"buttonClass"}
-                onClick={() => navigate("/register")}
-              >
+              <button className={"buttonClass"} onClick={() => navigate("/register")}>
                 Kayıt Ol.
               </button>
             </form>
