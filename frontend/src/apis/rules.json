@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Kural 1",
+    "desc": "Alıcı veya satıcı ile irtibata geçebilirsiniz. Baski, tehdit, kırıcı bir dil ile yaklaşmak yasaktır.",
+    "img": "https://cdn-icons-png.flaticon.com/512/2046/2046915.png"
+  },
+  {
+    "id": 2,
+    "title": "Kural 2",
+    "desc": "Lütfen aracısız işlem yapmayınız. Aracısız işlem yapmak tehlikeli ve yasaktır. ",
+    "img": "https://cdn-icons-png.flaticon.com/512/7304/7304975.png"
+  },
+  {
+    "id": 3,
+    "title": "Kural 3",
+    "desc": "WhatsApp ve Telegram gruplarımız mevcuttur. Harici bir grup kurmak yasaktır.",
+    "img": "https://cdn-icons-png.flaticon.com/512/1622/1622662.png"
+  },
+  {
+    "id": 4,
+    "title": "Kural 4",
+    "desc": "Başka birisinin hesabını ilana koymak yasaktır. Lütfen empati kurunuz.",
+    "img": "https://cdn-icons-png.flaticon.com/512/2581/2581463.png"
+  },
+  {
+    "id": 5,
+    "title": "Kural 5",
+    "desc": "Şahsına ait olmayan telefon numarası ve kimlik numarası ile kayıt olmak yasaktır. ",
+    "img": "https://cdn-icons-png.flaticon.com/512/4072/4072758.png"
+  },
+  {
+    "id": 6,
+    "title": "Kural 6",
+    "desc": "Dolandırıcılığa engel olmak ve güven ortamı sağlamak için lütfen kurallara uyunuz.",
+    "img": "https://cdn-icons-png.flaticon.com/512/1623/1623103.png"
+  }
+]

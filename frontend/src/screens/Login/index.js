@@ -4,6 +4,7 @@ import "./Styles.Login.css";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,27 +22,29 @@ const Login = () => {
       .post("http://localhost/findevents/api/login.php", form)
       .then((res) => {
         console.log("DDD", res);
-        if (res.data.statusCode === 200) {
-          alert(res.data.message);
+        sessionStorage.setItem("useremail", res.data.user.email);
+
+        if (res.data.statusCode === 200 && sessionStorage.getItem("useremail") !== null) {
           navigate("/home");
+
+          window.location.reload();
+
+          Swal.fire({
+            title: "Success",
+            text: `${res.data.message}`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
         } else if (res.data.statusCode === 401) {
-          alert(res.data.message);
+          Swal.fire({
+            title: "Error",
+            text: `${res.data.message}`,
+            icon: "error",
+            confirmButtonText: "OK",
+          });
         }
       })
       .catch((err) => console.log("err", err));
-
-    // try {
-    //   const response = await axios.post("http://localhost/findevents/api/login.php", {
-    //     email,
-    //     password,
-    //   });
-
-    //   console.log(response.data);
-    //   // Başarılı giriş durumu burada işlenir, örneğin token localStorage'e kaydedilebilir.
-    // } catch (error) {
-    //   console.error(error);
-    //   // Hatalı giriş durumu burada işlenir, örneğin kullanıcıya hata mesajı gösterilir.
-    // }
   };
 
   return (

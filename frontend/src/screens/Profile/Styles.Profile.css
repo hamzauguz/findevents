@@ -1,0 +1,110 @@
+.profilePlace {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.sellerAccountPlace {
+  justify-content: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+}
+@media screen and (max-width: 800px) {
+  .sellerAccountPlace {
+    display: flex;
+    flex-direction: column;
+  }
+  .usernamePlaceSellerAccount {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 20em !important;
+    justify-content: space-between;
+    margin-top: 1em;
+  }
+  .sellerAccountPlace {
+    background-color: whitesmoke;
+  }
+  .usernamePlaceSellerAccount {
+    display: flex;
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .rightAccount {
+    text-align: center !important;
+  }
+  .lineAccountPlace {
+    width: 70%;
+    background-color: red;
+    margin: 0 auto;
+  }
+  .userinfoSellerAccount {
+    text-align: center;
+  }
+
+  .addsSellerAccount {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.usernamePlaceSellerAccount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 30em;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.usernamePlaceSellerAccount h3 {
+  opacity: 0.7;
+}
+
+.lineAccountPlace {
+  margin-top: 0.5em;
+}
+
+.sellerAccountPlace {
+  background-color: whitesmoke;
+}
+
+.imageSellerAccount {
+  margin: 1em;
+  border-radius: 7em;
+}
+
+.rightAccount {
+  text-align: right;
+}
+
+.userInfoSeller {
+  margin: 1em;
+}
+
+.addsSellerAccount {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+
+.mainsellerAccount {
+  margin: 1em auto;
+  width: 70%;
+}
+
+.editdeleteSellerAccount {
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+
+  height: 9em;
+}
+
+.editdeleteiconsAccount:hover {
+  opacity: 0.5;
+}

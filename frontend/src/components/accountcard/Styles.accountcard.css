@@ -85,3 +85,26 @@
   color: rgb(61, 61, 78);
   opacity: 0.8;
 }
+
+.titleUnderPlace {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.deleteCard {
+  margin-left: 1em;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.deleteSpan:hover {
+  color: red;
+}
+
+.editSpan:hover {
+  color: rgb(119, 119, 29);
+}

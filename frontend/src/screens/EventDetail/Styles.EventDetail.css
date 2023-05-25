@@ -1,0 +1,178 @@
+@media screen and (max-width: 1050px) {
+  .descScreen {
+    margin: 0 auto;
+    flex-direction: column !important;
+    display: flex;
+    align-items: center;
+  }
+  .eventDetailRight {
+    width: 90%;
+    margin: 0 auto;
+
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+  }
+  .rowContainerDetail {
+    flex-direction: row;
+    display: flex;
+    margin-right: 1em;
+
+    width: 70% !important;
+
+    justify-content: space-between;
+  }
+  .descImage {
+    height: 20em !important;
+    width: 30em;
+    flex: 0.3;
+  }
+}
+
+.descScreen {
+  width: 90%;
+  margin: 0 auto;
+  flex-direction: row;
+  display: flex;
+}
+
+.descImage {
+  height: 30em;
+  width: 30em;
+  flex: 0.3;
+}
+
+.eventDetailRight {
+  width: 90%;
+  margin: 0 auto;
+  margin-left: 1em;
+  flex-direction: column;
+  display: flex;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+.eventtitleDesc {
+  margin: 1em auto;
+
+  justify-content: center;
+  display: flex;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.eventtitle {
+  font-weight: bold;
+  font-size: 22px;
+  opacity: 0.9;
+}
+
+.eventTitleRight {
+  font-size: 22px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.eventdescRight {
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.eventDescPlace {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.rowContainerDetail {
+  flex-direction: row;
+  display: flex;
+  margin-right: 1em;
+
+  width: 50%;
+
+  justify-content: space-between;
+}
+
+.favandjoinPlace {
+  margin-top: 2.5em;
+  margin-bottom: 2.5em;
+  justify-content: space-between;
+  display: flex;
+  height: 4em;
+  width: 90%;
+}
+
+.favandjoinButtonStyle {
+  width: 40%;
+  border-radius: 1em;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.favandjoinButtonStyle:hover {
+  background-color: rgb(169, 169, 169);
+}
+
+.commentsContainer {
+  height: auto;
+  margin-top: 3em;
+  flex-direction: column;
+  display: flex;
+}
+
+.commentsTitle {
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.userCommentContainer {
+  display: flex;
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  width: 90%;
+}
+
+.userCommentRightContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2em;
+}
+
+.fullNameTitle {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.descComment {
+  display: block;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+.starswithnamePlace {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.starsCommentsPlace {
+  margin-left: 1em;
+}
+
+.doCommentContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.commenttextPlace {
+  width: 90%;
+}
+
+.docommentTitle {
+  font-weight: 500;
+  font-size: 22px;
+}

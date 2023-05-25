@@ -12,16 +12,20 @@ const Register = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log(formvalue);
-    const formData = { email: email, password: password };
+    const formData = { email: email, phone, password: password };
     await axios
       .post("http://localhost/findevents/api/user.php", formData)
       .then((res) => {
         setMessage(res.data.success);
+        console.log(res);
+        sessionStorage.setItem("useremail", res.data.user);
         navigate("/home");
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
@@ -41,6 +45,14 @@ const Register = () => {
                 className={"loginStandartInputNone"}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+              <input
+                name="phone"
+                type="text"
+                placeholder={"Telefonunuzu giriniz..."}
+                className={"loginStandartInputNone"}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
               <input
                 name="password"

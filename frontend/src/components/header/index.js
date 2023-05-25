@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Form, Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
+import { Button, Form, Container, Nav, Navbar, NavDropdown, Image, Dropdown } from "react-bootstrap";
 // import Button from 'react-bootstrap/Button';
 // import Container from 'react-bootstrap/Container';
 // import Form from 'react-bootstrap/Form';
@@ -11,6 +11,7 @@ import { Button, Form, Container, Nav, Navbar, NavDropdown, Image } from "react-
 import "./Styles.Header.css";
 
 const Header = () => {
+  console.log(sessionStorage.getItem("useremail"));
   return (
     <Navbar bg="light" expand="lg">
       <Container style={{ fontSize: 20, width: "90%" }} fluid>
@@ -28,24 +29,52 @@ const Header = () => {
             navbarScroll
           >
             <Nav.Link href="/home">Anasayfa</Nav.Link>
+            {sessionStorage.getItem("useremail") !== null && <Nav.Link href="/addevents">Etkinlik Ekle</Nav.Link>}
+
             <Nav.Link href="/events">Etkinlikleri Listele</Nav.Link>
-            <Nav.Link href="/addevents">Etkinlik Ekle</Nav.Link>
             <Nav.Link href="/contact">İletişim</Nav.Link>
           </Nav>
           <Nav className="d-flex">
-            <Nav.Link href="/login">
-              <Button style={{ fontWeight: "500" }} variant="info">
-                Giriş Yap
-              </Button>
-            </Nav.Link>
-            <Nav.Link href="/register">
-              <Button style={{ fontWeight: "500" }} variant="info">
-                Kayıt Ol
-              </Button>
-            </Nav.Link>
-            <Nav.Link href="/profile">
-              <Image height={30} width={30} src="https://cdn-icons-png.flaticon.com/512/992/992659.png" />
-            </Nav.Link>
+            {sessionStorage.getItem("useremail") !== null ? (
+              <>
+                <Nav.Link href="/login">
+                  <Button
+                    onClick={() => {
+                      sessionStorage.removeItem("useremail");
+                    }}
+                    style={{ fontWeight: "500" }}
+                    variant="warning"
+                  >
+                    Çıkış Yap
+                  </Button>
+                </Nav.Link>
+
+                <Dropdown>
+                  <Dropdown.Toggle variant="" id="dropdown-basic">
+                    <Image height={30} width={30} src="https://cdn-icons-png.flaticon.com/512/992/992659.png" />
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="/profile">Profil</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Hesap Bilgileri</Dropdown.Item>
+                    <Dropdown.Item href="/resetpassword">Şifremi Değiştir</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </>
+            ) : (
+              <>
+                <Nav.Link href="/login">
+                  <Button style={{ fontWeight: "500" }} variant="info">
+                    Giriş Yap
+                  </Button>
+                </Nav.Link>
+                <Nav.Link href="/register">
+                  <Button style={{ fontWeight: "500" }} variant="info">
+                    Kayıt Ol
+                  </Button>
+                </Nav.Link>
+              </>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
