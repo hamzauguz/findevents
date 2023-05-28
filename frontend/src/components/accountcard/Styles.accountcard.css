@@ -93,18 +93,29 @@
 }
 
 .deleteCard {
-  margin-left: 1em;
-
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 
   align-items: center;
 }
 
+.deleteSpan {
+  z-index: 9999;
+  height: 30px;
+  width: 30px;
+}
+
 .deleteSpan:hover {
   color: red;
+  cursor: pointer;
 }
 
 .editSpan:hover {
   color: rgb(119, 119, 29);
+  cursor: pointer;
+}
+.accountCardMain {
+  display: flex;
+  flex-direction: row;
 }

@@ -23,6 +23,9 @@ const Login = () => {
       .then((res) => {
         console.log("DDD", res);
         sessionStorage.setItem("useremail", res.data.user.email);
+        sessionStorage.setItem("phone", res.data.user.phone);
+        sessionStorage.setItem("fullName", res.data.user.fullName);
+        sessionStorage.setItem("password", res.data.user.password);
 
         if (res.data.statusCode === 200 && sessionStorage.getItem("useremail") !== null) {
           navigate("/home");

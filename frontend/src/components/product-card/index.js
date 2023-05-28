@@ -19,11 +19,6 @@ const ProductCard = ({ date, src, title, category, description, price, cunit, on
             {cunit}
             {price}
           </div>
-          <div className="product-links">
-            <a href="">
-              <i className="fa fa-heart"></i>
-            </a>
-          </div>
         </div>
       </div>
     </div>

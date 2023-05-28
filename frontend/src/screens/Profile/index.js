@@ -4,15 +4,21 @@ import AccountCard from "../../components/accountcard";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Pagination from "../../components/pagination";
+import Swal from "sweetalert2";
 
 const Profile = () => {
   const useremail = sessionStorage.getItem("useremail");
+  const phoneKey = sessionStorage.getItem("phone");
+  const fullNameKey = sessionStorage.getItem("fullName");
+
   const [eventData, setEventData] = useState([]);
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(5);
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const navigate = useNavigate();
+
   useEffect(() => {
     axios.get("http://localhost/findevents/api/event.php").then((res) => {
       console.log(res.data);
@@ -22,7 +28,35 @@ const Profile = () => {
   console.log(eventData);
   const EventDataFilter = eventData.filter((email) => email.owneremail === useremail);
   console.log(EventDataFilter);
+  const handleDelete = (eventid) => {
+    Swal.fire({
+      title: "Sil",
+      text: "Bu etkinliği silmek istiyor musunuz?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Evet",
+      cancelButtonText: "Hayır",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Kullanıcı "Evet" butonuna tıkladı
+        // İşlemleri burada gerçekleştirin
+        Swal.fire({
+          title: "Success",
+          text: `Etkinlik başarıyla silindi.`,
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then((res) => window.location.reload());
+        axios
+          .delete("http://localhost/findevents/api/event.php?eventid=" + parseInt(eventid))
+          .then((res) => console.log("silindi", res.data));
 
+        console.log("hanndle delete:: ", eventid);
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Kullanıcı "Hayır" butonuna tıkladı veya dışarıya tıklandı
+        // İşlemleri burada gerçekleştirin
+      }
+    });
+  };
   return (
     <div className="profilePlace">
       <div className="sellerAccountPlace">
@@ -30,9 +64,7 @@ const Profile = () => {
           className="imageSellerAccount"
           width={200}
           height={200}
-          src={
-            "https://www.arabateknikbilgi.com/wp-content/uploads/2021/04/ArabaTeknikBilgi-1993-2002-Toyota-Supra-3.0i-1-1.jpg"
-          }
+          src={"https://cdn-icons-png.flaticon.com/512/1946/1946429.png"}
         />
         <div className="userInfoSeller">
           <div className="userinfoSellerAccount">
@@ -46,7 +78,7 @@ const Profile = () => {
             </div>
             <div className="rightAccount">
               <h3>İsim Soyisim</h3>
-              <span>Hamza Uğuz</span>
+              <span>{fullNameKey}</span>
             </div>
           </div>
           <div className="usernamePlaceSellerAccount">
@@ -56,7 +88,7 @@ const Profile = () => {
             </div>
             <div className="rightAccount">
               <h3>Telefon Numarası</h3>
-              <span>05459551668</span>
+              <span>{phoneKey}</span>
             </div>
           </div>
         </div>
@@ -78,6 +110,12 @@ const Profile = () => {
                 cardPrice={item.eventprice}
                 cardDate={item.eventdate}
                 deletePlace
+                editInPlace
+                deleteClick={() => {
+                  handleDelete(item.eventid);
+                  console.log("tiklandı", item.eventid);
+                }}
+                editClick={() => navigate("/editevent", { state: { item } })}
               />
             );
           }).slice(firstPostIndex, lastPostIndex)}

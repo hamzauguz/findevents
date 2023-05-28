@@ -41,6 +41,9 @@ const Header = () => {
                   <Button
                     onClick={() => {
                       sessionStorage.removeItem("useremail");
+                      sessionStorage.removeItem("fullName");
+                      sessionStorage.removeItem("password");
+                      sessionStorage.removeItem("phone");
                     }}
                     style={{ fontWeight: "500" }}
                     variant="warning"
@@ -57,6 +60,7 @@ const Header = () => {
                   <Dropdown.Menu>
                     <Dropdown.Item href="/profile">Profil</Dropdown.Item>
                     <Dropdown.Item href="#/action-2">Hesap Bilgileri</Dropdown.Item>
+                    <Dropdown.Item href="/favorievents">Favori Etkinliklerim</Dropdown.Item>
                     <Dropdown.Item href="/resetpassword">Şifremi Değiştir</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>

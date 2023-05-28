@@ -13,6 +13,8 @@ import Footer from "./components/footer";
 import EventDetail from "./screens/EventDetail";
 import Admin from "./screens/Admin";
 import ResetPassword from "./screens/ResetPassword";
+import EditEvent from "./screens/EditEvent";
+import FavoriEvents from "./screens/FavoriEvents";
 
 const App = () => {
   console.log(sessionStorage.getItem("useremail"));
@@ -27,6 +29,7 @@ const App = () => {
           {sessionStorage.getItem("useremail") !== null ? (
             <>
               <Route path="/addevents" element={<AddEvents />} />
+              <Route path="/favorievents" element={<FavoriEvents />} />
             </>
           ) : (
             <>
@@ -39,6 +42,7 @@ const App = () => {
           <Route path="/events" element={<Events />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/editevent" element={<EditEvent />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
           <Route path="/events/:id" element={<EventDetail />} />
         </Routes>

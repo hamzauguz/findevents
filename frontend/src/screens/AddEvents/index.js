@@ -50,7 +50,7 @@ const AddEvents = () => {
       .post("http://localhost/findevents/api/event.php", form)
       .then((res) => {
         console.log("DDD", res.data);
-        if (res.data.success === "User Added Successfully") {
+        if (res.data.success == "Event Added Successfully") {
           Swal.fire({
             title: "Success",
             text: `Etkinlik başarıyla oluşturulmuştur.`,
